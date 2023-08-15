@@ -1,0 +1,196 @@
+1)We can connect server instances using the SSH Putty / Mobaxterm tools.
+-----------------
+Linux Commands
+-----------------
+System commands:
+--------------------------
+1)Cear or Ctrl+L: To clear the screen data.
+
+2)SUDO (Super user do)  :  Change the normal user to root user.
+	normal user symbol is ($) and root user symbol is (#)
+	
+3)uname :Display operating system name
+
+4)uname -r : Display Kernal name
+
+5)uname -a  :Operating system & all information showed
+
+6)we can show ip address use the below commands
+   i)hostname -i
+   ii)ip addr show
+   iii)ip addr
+   iv)ifconfig
+   
+7)We can set/change HOSTNAME using the below commands (Note: If need to change hostname goto root user)
+  i)hostnamectl set-hostname <name>   ex: hostnamectl set-hostname my-pc
+  
+8)If change normal user to root user using the below command
+  i)sudo -i
+  
+9)If login user to user use the below command
+  i)su - <username>  ex:su - ec2-user  or su - ramesh
+  
+10)We can check last rebooted time use the below command
+	i)last rebooted
+
+11)Display date use the below command
+	i)date
+	
+12)Display the previous commands history use the below command
+	i)history
+	
+13)Display Timezone date use the below command
+	i)timedatectl
+	
+14)Display the calendar use the below command
+	i)cal
+	
+15)Who is logined the system we can check the below command
+	i)who
+	
+16)Who is the current user check the below command
+	i)whoami
+	
+------------------------
+	
+Hardware commands:	
+--------------------
+	
+17)Display the boot messages use the below command
+	i)dmesg
+	
+18)Display the hardware information for the BIOS use the below command
+	i)dmidecode
+	
+19)Display the CPU information use the below command
+	i)cat /proc/cpuinfo (lscpu)
+	
+20)Display the MEMORY information use the below command
+	i)cat /proc/meminfo (lsmem)
+	
+21)Display the disk information use the below command
+	i)lsblk or fdisk -l
+	
+22)df
+23)lspci -tv
+
+24)Display the process information use the below command
+	i)ps   (Note: if delete process use the below command)
+	kill -9(default) <pidno>
+----------------
+File Commands:
+----------------
+25)To create file name use the following commands
+ i)touch <filename> ex: touch file1.txt
+ ii)touch file{1..10}.txt  (create multiple files at a time)
+ 
+26)To show the list of files use the below command
+	i)ll
+	ii)ls -a (to see the hidden files also)
+	
+27)To see the content of the file use the below command
+	i)cat <filename>  ex: cat file1.txt
+	
+28)To write the content inside file use the below command
+	i)cat > <filename>  ex:cat > file1.txt
+	ii)cat >> <filename> (append the content to existing file) ex: cat >> file1.txt
+	iii)cat <options> <filename>
+	    options: -b set line numbers with non block lines
+				 -n  set line numbers with block and non lines also
+				 -s squeeze multiple black lines to one block line
+				 -e set $ symbol end of the line
+	Note:after completed content use Ctrl+D to save and exit.
+	
+29)cp <source>  <destination>  ex: cp file1.txt  file2.txt
+
+30)To rename the file use the below command
+	i)mv <existing file name> <new file name>
+	
+31)To remove the file name use the below command
+	i)rm <filename> (it will ask confirmation)
+	ii)rm -f <filename> (it will not ask confirmation forcefully removed)
+	iii)rm -f * (remove all files in the current directory)
+	iv)rm -rf file{1..5}.txt
+	v)rm -rf *
+
+32)To shows the top 5 records use the below command
+	i)head -<number of records> <filename>  ex:head -5 file1.txt
+	
+33)To shows the bottom 5 records use the below command
+	i)tail -<number of records> <filename>  ex:tail -5 file1.txt
+	
+34)To show/print particular lines records use the below command
+	i)sed -n '<startnumber,<endnumber>p' <filename> ex:sed -n '5,15p' file1.txt or sed -n '2p' file1.txt
+	
+35)To check the lines/words/characters count in file use the below command
+	i)wc <filename>  ex:wc file1.txt
+
+36)To see the file size use the below command
+	i)du -sh <filename>  ex:du -sh file1.txt
+	
+37)To create the directory use the below command
+	i)mkdir <foldername>  ex:mkdir MyFolder
+------------------
+Editor: VI
+------------------
+38)To edit the file using editor use the below editor.
+	i)vi <filename>	ex:vi file1.txt
+	There are different modes are available in VI editor.
+		i)Save Mode ii)Insert Mode iii)Command Mode
+39)SaveModes:
+	i)w ==>Save file
+	ii)q ==>quit file
+	iii)wq ==>save and quit
+	iv)w! ==>forcefully save
+	v)q! ==>forcefully quit
+	vi)wq! ==>forcefully save&quit
+40)InsertModes:
+	i)i ==>it will enable insert modes
+	ii)I ==>moved cursor to bigining of the line
+	iii)A  ==>moved cursor to end of the line
+	iv)o  ==>insert one line to down 
+	v)O   ==>insert one line to up
+41)CommandModes:
+	i)gg  ==>move cursor to top of the line
+	ii)shift+g  ==>move the cursor to top of the line
+	iii)yy  ==>copied single line,3yy ==>3lines copied like that,...
+	iv)p  ==>paste copied lines,  5p  ==>5 times pasted
+	v)dd  ==>delete the line , 3dd   ==>3 lines deleted
+	vi)u  ==>undo previous action
+	vii)/<word name>  ==>find the word in opened inside vi editor.
+	viii):<number>  ==>goto the given line
+	
+42)View two files top and bottom use the below command
+	i)vim -o file1 file2 (top and bottom)
+	ii)vim -O file1 file2 (side by side)
+
+43)Two files comparision
+	i)diff file1.txt file2.txt
+----------------------
+File Permission:
+---------------------
+44)drwxr-xr-x 2 root root  6 Jul 27 09:11 Person (or) -rw-r--r-- 1 root root  0 Jul 26 09:46 file2.txt
+ 1char is filetypes (ex: - is regular file,b is blocked file,c is character file,d is directory ,l is line file)   
+ 
+ i)r is read, w is write , x is execute (symbolic)
+ ii)4 is read , 2 is write, 1 is execute (number)
+ 
+ rw-   :user    : 6(4+2+0)
+ r--   :group   :4(4+0+0)  
+ rwx   :other	:7(4+2+1)
+--------------------- 
+Change Permission
+----------------------
+45)Change file permissions using the below command
+	i)chmod <read><write><executable> <file1.txt>  ex:chmod 421 file1.txt
+	
+	
+
+Note: Uninstall Java all version softwares in linux
+   ex: yum remove java* -y
+   check version in java   ex: java -version
+   
+If multiple versions installed, we need select particular version using the following command
+
+i)update-alternatives --config java
+after that we need to select which version selection number. (in front * available is the current enabled version)
